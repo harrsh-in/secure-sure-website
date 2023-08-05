@@ -1,5 +1,7 @@
 import { InitialValuesType, ModelContext } from '@/context/modal.context';
+import Image from 'next/image';
 import { MouseEvent, useContext } from 'react';
+import CloseIcon from '../../../public/assets/close.svg';
 
 const Modal = ({ children }: IProps) => {
     const {
@@ -27,7 +29,7 @@ const Modal = ({ children }: IProps) => {
             onClick={handleCloseModal}
         >
             <div className="w-full sm:w-max bg-white p-4 rounded-xl mx-4 sm:mx-12">
-                <div className="flex justify-between">
+                <div className="flex justify-between pb-4">
                     <div>
                         {prevModal ? (
                             <p
@@ -40,7 +42,14 @@ const Modal = ({ children }: IProps) => {
                         ) : null}
                     </div>
 
-                    <p onClick={handleCloseModalContext}>Close</p>
+                    <Image
+                        src={CloseIcon}
+                        alt="Close"
+                        onClick={handleCloseModalContext}
+                        className="cursor-pointer"
+                        height={40}
+                        width={40}
+                    />
                 </div>
 
                 <div className="overflow-auto max-h-[70vh]">{children}</div>

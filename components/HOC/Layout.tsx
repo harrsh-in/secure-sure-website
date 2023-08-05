@@ -3,7 +3,7 @@ import {
     ModalType,
     ModelContext
 } from '@/context/modal.context';
-import { useContext } from 'react';
+import { Fragment, useContext } from 'react';
 import Modal from './Modal';
 import NewPolicyModal from './Modal/Alliance/NewPolicyModal';
 import TypeOptionsModal from './Modal/Alliance/TypeOptionsModal';
@@ -14,7 +14,7 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
     const { type } = useContext(ModelContext) as InitialValuesType;
 
     return (
-        <div className="">
+        <Fragment>
             <Modal>
                 {type === ModalType['contact-us'] ||
                 type === ModalType['policy-renewal'] ? (
@@ -30,8 +30,8 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
                 )}
             </Modal>
 
-            {children}
-        </div>
+            <div>{children}</div>
+        </Fragment>
     );
 };
 

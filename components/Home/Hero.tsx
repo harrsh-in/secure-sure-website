@@ -3,12 +3,10 @@ import {
     ModalType,
     ModelContext
 } from '@/context/modal.context';
-import { links } from '@/utils/constants';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useContext } from 'react';
-import One from '../../public/assets/Home/1.svg';
 import Two from '../../public/assets/Home/2.svg';
+import Four from '../../public/assets/Home/4.svg';
 import ManOne from '../../public/assets/Home/People/1.jpg';
 import ManTwo from '../../public/assets/Home/People/2.jpg';
 import ManThree from '../../public/assets/Home/People/3.jpg';
@@ -36,25 +34,12 @@ const Hero = () => {
                 </p>
                 <div className="flex gap-[25px] flex-col sm:flex-row my-[40px]">
                     <div
-                        className="bg-[#546FFF] py-[10px] px-[35px] rounded-[100px] text-white cursor-pointer w-[170px] flex"
+                        className="bg-[#546FFF] py-[10px] px-[35px] rounded-[100px] text-white cursor-pointer flex gap-3"
                         onClick={() => handleOpenModal(ModalType['contact-us'])}
                     >
-                        <p className="m-auto">Chat with us</p>
-                    </div>
+                        <Image src={Four} alt="" />
 
-                    <div className="relative w-[200px] flex">
-                        <Link href={links.alliance}>
-                            <div className="bg-[#E1FFF1] border border-[#309C68] text-[#309C68] py-[10px] px-[35px] rounded-[100px] m-auto flex">
-                                <p className="m-auto">Explore services</p>
-                            </div>
-                        </Link>
-
-                        <Image
-                            src={One}
-                            alt="Explore services"
-                            width={20}
-                            className="absolute bottom-[-15px] right-[-11px]"
-                        />
+                        <p className="m-auto">Buy/Renew Insurance</p>
                     </div>
                 </div>
 

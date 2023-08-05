@@ -34,7 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
     return (
         <ModelProvider>
-            <main className={`${font.className} w-screen`}>
+            <main className={`${font.className}`}>
                 <Layout>
                     <Navbar />
                     <WhatsApp />
