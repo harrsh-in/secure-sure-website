@@ -5,22 +5,23 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import validator from 'validator';
 import { z } from 'zod';
 import WhatsApp from '../../public/assets/WhatsAppLogo.svg';
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
+import { InitialValuesType, ModelContext } from '@/context/modal.context';
 
 const schema = z.object({
-    firstName: z
+    'First name': z
         .string({
             required_error: 'First name is required.',
             invalid_type_error: 'First name is required.'
         })
         .nonempty('First name is required.'),
-    lastName: z
+    'Last name': z
         .string({
             required_error: 'Last name is required.',
             invalid_type_error: 'Last name is required.'
         })
         .nonempty('Last name is required.'),
-    contactNumber: z
+    'Contact number': z
         .string({
             required_error: 'Contact number is required.',
             invalid_type_error: 'Contact number is required.'
@@ -30,14 +31,14 @@ const schema = z.object({
             validator.isMobilePhone,
             'Please enter a valid contact number.'
         ),
-    email: z
+    Email: z
         .string({
             required_error: 'Email address is required.',
             invalid_type_error: 'Email address is required.'
         })
         .nonempty('Email address is required.')
         .email('Please enter a valid email address.'),
-    query: z
+    Query: z
         .string({
             required_error: 'Query message is required.',
             invalid_type_error: 'Query message is required.'
@@ -48,6 +49,10 @@ const schema = z.object({
 export type schemaType = z.infer<typeof schema>;
 
 const ContactUsForm = () => {
+    const { handleCloseModal: handleCloseModalContext } = useContext(
+        ModelContext
+    ) as InitialValuesType;
+
     const {
         register,
         handleSubmit,
@@ -56,8 +61,14 @@ const ContactUsForm = () => {
         resolver: zodResolver(schema)
     });
 
-    const onSubmit: SubmitHandler<schemaType> = (data: schemaType) =>
-        console.log(data);
+    const onSubmit: SubmitHandler<schemaType> = (data: schemaType) => {
+        fetch('/api/mail', {
+            method: 'POST',
+            body: JSON.stringify(data)
+        }).finally(() => {
+            handleCloseModalContext();
+        });
+    };
 
     const handleWhatsAppClick = () => {
         window.open(`https://wa.me/${process.env.NEXT_PUBLIC_CONTACT_NUMBER}`);
@@ -73,13 +84,13 @@ const ContactUsForm = () => {
                     <input
                         type="text"
                         placeholder="First Name"
-                        id="firstName"
+                        id="First name"
                         className="w-full border border-transparent placeholder-[#838383] bg-[#EAF2FF] rounded-full py-4 px-5 outline-none"
-                        {...register('firstName')}
+                        {...register('First name')}
                     />
 
                     <p className="text-sm text-red-700">
-                        {_.get(errors, 'firstName.message')}
+                        {_.get(errors, '"First name".message')}
                     </p>
                 </div>
 
@@ -87,13 +98,13 @@ const ContactUsForm = () => {
                     <input
                         type="text"
                         placeholder="Last Name"
-                        id="lastName"
+                        id="Last name"
                         className="w-full border border-transparent placeholder-[#838383] bg-[#EAF2FF] rounded-full py-4 px-5 outline-none"
-                        {...register('lastName')}
+                        {...register('Last name')}
                     />
 
                     <p className="text-sm text-red-700">
-                        {_.get(errors, 'lastName.message')}
+                        {_.get(errors, 'Last name.message')}
                     </p>
                 </div>
 
@@ -101,13 +112,13 @@ const ContactUsForm = () => {
                     <input
                         type="text"
                         placeholder="Email address"
-                        id="email"
+                        id="Email"
                         className="w-full border border-transparent placeholder-[#838383] bg-[#EAF2FF] rounded-full py-4 px-5 outline-none"
-                        {...register('email')}
+                        {...register('Email')}
                     />
 
                     <p className="text-sm text-red-700">
-                        {_.get(errors, 'email.message')}
+                        {_.get(errors, 'Email.message')}
                     </p>
                 </div>
 
@@ -115,13 +126,13 @@ const ContactUsForm = () => {
                     <input
                         type="text"
                         placeholder="Contact number"
-                        id="contactNumber"
+                        id="Contact number"
                         className="w-full border border-transparent placeholder-[#838383] bg-[#EAF2FF] rounded-full py-4 px-5 outline-none"
-                        {...register('contactNumber')}
+                        {...register('Contact number')}
                     />
 
                     <p className="text-sm text-red-700">
-                        {_.get(errors, 'contactNumber.message')}
+                        {_.get(errors, 'Contact number.message')}
                     </p>
                 </div>
 
@@ -129,16 +140,16 @@ const ContactUsForm = () => {
                     <div className="rounded-3xl border border-transparent placeholder-[#838383] bg-[#EAF2FF] py-3 px-5 w-full">
                         <textarea
                             placeholder="Query"
-                            id="query"
+                            id="Query"
                             // cols={30}
                             className="w-full border-0 placeholder-[#838383] bg-[#EAF2FF] outline-none"
                             rows={5}
-                            {...register('query')}
+                            {...register('Query')}
                         />
                     </div>
 
                     <p className="text-sm text-red-700">
-                        {_.get(errors, 'query.message')}
+                        {_.get(errors, 'Query.message')}
                     </p>
                 </div>
 
