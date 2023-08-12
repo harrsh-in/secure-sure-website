@@ -1,3 +1,4 @@
+import { toast } from 'react-hot-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import _ from 'lodash';
 import Image from 'next/image';
@@ -37,12 +38,7 @@ const schema = z.object({
         })
         .nonempty('Email address is required.')
         .email('Please enter a valid email address.'),
-    query: z
-        .string({
-            required_error: 'Query message is required.',
-            invalid_type_error: 'Query message is required.'
-        })
-        .nonempty('Query message is required.')
+    query: z.string().optional()
 });
 
 export type schemaType = z.infer<typeof schema>;
@@ -51,13 +47,21 @@ const ContactUs = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors }
     } = useForm<schemaType>({
         resolver: zodResolver(schema)
     });
 
-    const onSubmit: SubmitHandler<schemaType> = (data: schemaType) =>
-        console.log(data);
+    const onSubmit: SubmitHandler<schemaType> = (data: schemaType) => {
+        fetch('/api/mail', {
+            method: 'POST',
+            body: JSON.stringify(data)
+        }).then(() => {
+            toast.success('Email sent successfully.');
+            reset();
+        });
+    };
 
     const address =
         'Secure Sure, Shubham Complex, Opposite Navrangpura Jain Temple, Navrangpura, Ahmedabad, Gujarat - 380009';

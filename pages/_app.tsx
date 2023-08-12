@@ -8,6 +8,7 @@ import type { AppProps } from 'next/app';
 import { Space_Grotesk } from 'next/font/google';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { Toaster } from 'react-hot-toast';
 
 const font = Space_Grotesk({
     preload: true,
@@ -35,6 +36,8 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
         <ModelProvider>
             <main className={`${font.className}`}>
+                <Toaster />
+
                 <Layout>
                     <Navbar />
                     <WhatsApp />
