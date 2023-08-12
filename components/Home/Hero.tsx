@@ -20,7 +20,7 @@ const Hero = () => {
         <div className="flex items-center flex-col-reverse lg:flex-row mt-[50px] sm:mt-[90px] gap-[50px] px-[1rem] md:px-[50px] xl:px-[150px]">
             <div className="w-full lg:w-1/2">
                 <h1 className="font-[700] text-[20px] sm:text-[30px] md:text-[35px] lg:text-[40px] text-[#546FFF]">
-                    Test
+                    We help you find the best Insurance Plan at the right price
                 </h1>
                 <p className="font-[500] mt-[25px]">
                     Do you want to protect your future and ensure your peace of
