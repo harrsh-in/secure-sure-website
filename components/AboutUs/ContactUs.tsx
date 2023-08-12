@@ -58,7 +58,7 @@ const ContactUs = () => {
             method: 'POST',
             body: JSON.stringify(data)
         }).then(() => {
-            toast.success('Email sent successfully.');
+            toast.success('We will get back to you soon.');
             reset();
         });
     };
