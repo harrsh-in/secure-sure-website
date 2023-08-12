@@ -12,14 +12,11 @@ export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>
 ) {
-    console.log(req.body);
     const data = JSON.parse(req.body);
     let html = '';
     Object.keys(data).map((el) => {
-        console.log(el, data[el]);
         html += `${el} - ${data[el]}<br>`;
     });
-    console.log(html);
 
     const transporter = nodemailer.createTransport({
         service: 'gmail',

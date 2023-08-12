@@ -3,9 +3,7 @@ import {
     ModalType,
     ModelContext
 } from '@/context/modal.context';
-import { links } from '@/utils/constants';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import ArrowRight from '../../public/assets/Home/Services/arrowRight.svg';
 import CarGreen from '../../public/assets/Home/Services/carGreen.svg';
@@ -16,7 +14,6 @@ import LetsTalkMessage from '../../public/assets/letsTalkMessage.svg';
 
 const Services = () => {
     const { handleOpenModal } = useContext(ModelContext) as InitialValuesType;
-    const router = useRouter();
 
     return (
         <div className="bg-[#F2FFF9] text-[#309C68] px-[1rem] md:px-[50px] xl:px-[150px] py-[60px] flex flex-col items-center">
@@ -54,9 +51,9 @@ const Services = () => {
 
                                 <div
                                     className="bg-[#309C68] p-1 rounded-full cursor-pointer"
-                                    onClick={() => {
-                                        router.push(links.alliance);
-                                    }}
+                                    onClick={() =>
+                                        handleOpenModal(ModalType['contact-us'])
+                                    }
                                 >
                                     <Image
                                         src={ArrowRight}

@@ -20,7 +20,6 @@ const Advantages = () => {
         }, 10000);
 
         return () => {
-            console.log('Clear interval');
             clearInterval(changeActiveTab);
         };
     }, [toggleResetActiveTab]);

@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import { useContext } from 'react';
-// import FaceBook from '../../public/assets/Footer/facebook.svg';
 import Instagram from '../../public/assets/Footer/instagram.svg';
-// import Twitter from '../../public/assets/Footer/twitter.svg';
 import {
     InitialValuesType,
     ModalType,
@@ -59,11 +57,7 @@ const Footer = () => {
                             key={feature.id}
                             className="w-fit cursor-pointer"
                             onClick={() => {
-                                if (feature.url) {
-                                    router.push(feature.url);
-                                } else {
-                                    handleOpenModal(ModalType['contact-us']);
-                                }
+                                handleOpenModal(ModalType['contact-us']);
                             }}
                         >
                             {feature.title}
@@ -120,13 +114,11 @@ export default Footer;
 const FeaturesList = [
     {
         id: 1,
-        title: 'Health insurance',
-        url: links.alliance
+        title: 'Health insurance'
     },
     {
         id: 2,
-        title: 'Life Insurance',
-        url: links.alliance
+        title: 'Life Insurance'
     },
     {
         id: 3,
@@ -147,21 +139,6 @@ const NavigationList = [
         id: 'home',
         title: 'Home',
         url: links.home
-    },
-    {
-        id: 'services',
-        title: 'Services',
-        url: links.alliance
-    },
-    {
-        id: 'brochures',
-        title: 'Brochures',
-        url: links.brochures
-    },
-    {
-        id: 'forms',
-        title: 'Forms',
-        url: links.forms
     },
     {
         id: 'about-us',
