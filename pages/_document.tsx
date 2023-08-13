@@ -10,6 +10,11 @@ export default function Document() {
                 />
 
                 <link rel="icon" href="/favicon.png" sizes="any" />
+
+                <meta
+                    name="google-site-verification"
+                    content="-DzCmCjIgiYmNueRaMRA9s0xP5Fy28d671U_v2vVN6Y"
+                />
             </Head>
             <body className="h-screen overflow-auto">
                 <Main />
