@@ -1,12 +1,13 @@
+import { InitialValuesType, ModelContext } from '@/context/modal.context';
 import { zodResolver } from '@hookform/resolvers/zod';
 import _ from 'lodash';
 import Image from 'next/image';
+import { Fragment, useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import validator from 'validator';
 import { z } from 'zod';
 import WhatsApp from '../../public/assets/WhatsAppLogo.svg';
-import { Fragment, useContext } from 'react';
-import { InitialValuesType, ModelContext } from '@/context/modal.context';
 
 const schema = z.object({
     'First name': z
@@ -38,12 +39,7 @@ const schema = z.object({
         })
         .nonempty('Email address is required.')
         .email('Please enter a valid email address.'),
-    Query: z
-        .string({
-            required_error: 'Query message is required.',
-            invalid_type_error: 'Query message is required.'
-        })
-        .nonempty('Query message is required.')
+    Query: z.string().optional()
 });
 
 export type schemaType = z.infer<typeof schema>;
@@ -66,6 +62,7 @@ const ContactUsForm = () => {
             method: 'POST',
             body: JSON.stringify(data)
         }).finally(() => {
+            toast.success('We will get back to you soon.');
             handleCloseModalContext();
         });
     };
