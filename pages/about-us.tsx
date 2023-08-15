@@ -8,7 +8,10 @@ const AboutUs = () => {
     return (
         <Fragment>
             <Head>
-                <title>About Us</title>
+                <title>
+                    About Us | Secure Sure Insurance Agency - Your Trusted
+                    Insurance Partner
+                </title>
             </Head>
 
             <div>
