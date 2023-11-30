@@ -44,7 +44,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <Script
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5218187278726369"
                 strategy="afterInteractive"
-                crossorigin="anonymous"
+                crossOrigin="anonymous"
             />
             {/* Google Analytics */}
             <Script
