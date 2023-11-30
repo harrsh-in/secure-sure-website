@@ -45,6 +45,8 @@ export default function Document() {
                     name="google-site-verification"
                     content="-DzCmCjIgiYmNueRaMRA9s0xP5Fy28d671U_v2vVN6Y"
                 />
+
+                <meta name="google-adsense-account" content="ca-pub-5218187278726369" />
             </Head>
             <body className="h-screen overflow-auto">
                 <Main />
