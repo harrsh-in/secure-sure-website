@@ -41,6 +41,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
     return (
         <Fragment>
+            <Script
+                strategy="afterInteractive"
+                src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5218187278726369`}
+            />
             {/* Google Analytics */}
             <Script
                 strategy="afterInteractive"
