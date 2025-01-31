@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react';
 
-const Map = ({ address }: IProps) => {
+const Map = () => {
     const [isMapLoaded, setIsMapLoaded] = useState(false);
 
     return (

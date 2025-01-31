@@ -1,8 +1,8 @@
-import { toast } from 'react-hot-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import _ from 'lodash';
 import Image from 'next/image';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import validator from 'validator';
 import { z } from 'zod';
 import ArrowRight from '../../public/assets/AboutUs/arrowRight.svg';
@@ -62,9 +62,6 @@ const ContactUs = () => {
             reset();
         });
     };
-
-    const address =
-        'Secure Sure, Shubham Complex, Opposite Navrangpura Jain Temple, Navrangpura, Ahmedabad, Gujarat - 380009';
 
     return (
         <div className="text-[#546FFF] px-[1rem] md:px-[50px] xl:px-[150px] pt-[60px] flex flex-col items-center">
@@ -170,7 +167,7 @@ const ContactUs = () => {
                 </form>
 
                 <div className="lg:flex-1 py-6 h-[500px] lg:h-auto">
-                    <Map address={address} />
+                    <Map />
                 </div>
             </div>
         </div>

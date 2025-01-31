@@ -104,6 +104,15 @@ const Footer = () => {
                 >
                     {process.env.NEXT_PUBLIC_HTML_CONTACT_NUMBER}
                 </Link>
+
+                <Link
+                    href="https://maps.app.goo.gl/kXzWfBsRFCH9idXz6"
+                    target="_blank"
+                    className="w-fit"
+                >
+                    301, 302 & 303, Shubham Complex, Shrimali Society,
+                    Navrangpura, Ahmedabad, Gujarat 380009
+                </Link>
             </div>
         </div>
     );
